@@ -12,7 +12,6 @@ public class CameraFollow : MonoBehaviour {
     float cameraSpeed = 2.0f;
 
     private bool turning = false;
-    private bool turned = false;
     [SerializeField]
     private float turnTime = 0.25f;
 
@@ -75,7 +74,6 @@ public class CameraFollow : MonoBehaviour {
             }
 
             transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, turnProgress);
-
             yield return null;
 
             time += Time.deltaTime;
