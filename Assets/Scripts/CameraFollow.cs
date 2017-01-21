@@ -43,30 +43,27 @@ public class CameraFollow : MonoBehaviour {
             turning = true;
             StartCoroutine(turn(1));
         }
-        else if(Input.GetKeyUp(KeyCode.Q) || Input.GetKeyUp(KeyCode.E))
-        {
-           turning = true;
-           StartCoroutine(turn(0));
-        }
+        //else if(Input.GetKeyUp(KeyCode.Q) || Input.GetKeyUp(KeyCode.E))
+        //{
+        //   turning = true;
+        //   StartCoroutine(turn(0));
+        //}
 	}
 
     private IEnumerator turn(float direction)
     {
-        Quaternion targetRotation;
+        Quaternion targetRotation = transform.rotation;
         float turnProgress = 0;
         float time = 0;
         if (direction == 1)
         {
-            targetRotation = Quaternion.Euler(transform.rotation.x, 60.0f, transform.rotation.z);
+            targetRotation = Quaternion.Euler(transform.rotation.x, transform.rotation.eulerAngles.y - 90.0f, transform.rotation.z);
         }
-        else if( direction == -1)
+        else if (direction == -1)
         {
-            targetRotation = Quaternion.Euler(transform.rotation.x, -60.0f, transform.rotation.z);
+            targetRotation = Quaternion.Euler(transform.rotation.x, transform.rotation.eulerAngles.y + 90.0f, transform.rotation.z);
         }
-        else
-        {
-            targetRotation = Quaternion.Euler(transform.rotation.x, 0.0f, transform.rotation.z);
-        }
+
         while (turning)
         {
             turnProgress = time / turnTime;
@@ -83,6 +80,8 @@ public class CameraFollow : MonoBehaviour {
 
             time += Time.deltaTime;
         }
+
+        transform.rotation = targetRotation;
         yield break;
     }
 }
