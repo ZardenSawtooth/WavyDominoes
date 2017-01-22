@@ -56,12 +56,14 @@ public class CameraFollow : MonoBehaviour {
         float time = 0;
         if (direction == 1)
         {
+            
             targetRotation = Quaternion.Euler(transform.rotation.x, transform.rotation.eulerAngles.y - 90.0f, transform.rotation.z);
         }
         else if (direction == -1)
         {
             targetRotation = Quaternion.Euler(transform.rotation.x, transform.rotation.eulerAngles.y + 90.0f, transform.rotation.z);
         }
+        whomToFollow.GetComponent<MovePlayer>().currentForward = targetRotation.eulerAngles.y;
 
         while (turning)
         {
@@ -80,6 +82,8 @@ public class CameraFollow : MonoBehaviour {
         }
 
         transform.rotation = targetRotation;
+        //set player rotation to face the forward direction of camera
+
         yield break;
     }
 }

@@ -19,10 +19,12 @@ public class MovePlayer : MonoBehaviour {
 
     private bool jumping = false;
     private float jumpStartVelocityY;
+    public float currentForward;
 
 	// Use this for initialization
 	void Start () {
         jumpStartVelocityY = -jumpDuration * Physics.gravity.y / 2;
+        currentForward = transform.rotation.eulerAngles.y;
 	}
 	
 	// Update is called once per frame
@@ -33,22 +35,22 @@ public class MovePlayer : MonoBehaviour {
         }
         else if(Input.GetKeyDown(KeyCode.W))
         {
-            transform.rotation = Quaternion.Euler(0, 0, 0);
+            transform.rotation = Quaternion.Euler(0, currentForward, 0);
             StartCoroutine(Jump(transform.forward * jumpDistance));
         }
         else if (Input.GetKeyDown(KeyCode.S))
         {
-            transform.rotation = Quaternion.Euler(0, 180, 0);
+            transform.rotation = Quaternion.Euler(0, - currentForward , 0);
             StartCoroutine(Jump(transform.forward * jumpDistance));
         }
         if (Input.GetKeyDown(KeyCode.D))
         {
-            transform.rotation = Quaternion.Euler(0, 90, 0);
+            transform.rotation = Quaternion.Euler(0, currentForward +90, 0);
             StartCoroutine(Jump(transform.forward * jumpDistance));
         }
         if (Input.GetKeyDown(KeyCode.A))
         {
-            transform.rotation = Quaternion.Euler(0, -90, 0);
+            transform.rotation = Quaternion.Euler(0, currentForward -90, 0);
             StartCoroutine(Jump(transform.forward * jumpDistance));
         }
             
