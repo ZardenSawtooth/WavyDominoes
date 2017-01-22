@@ -19,7 +19,7 @@ public class KillZone : MonoBehaviour {
     {
         if (other.gameObject.tag == "Player")
         {
-             SceneManager.LoadScene("TestScene1");
+             SceneManager.LoadScene("Level1");
         }
     }
 }
