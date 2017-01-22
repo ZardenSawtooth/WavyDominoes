@@ -20,6 +20,8 @@ public class MovePlayer : MonoBehaviour {
     private bool jumping = false;
     private float jumpStartVelocityY;
     public float currentForward;
+    
+    public Animator characterAnimator;
 
 	// Use this for initialization
 	void Start () {
@@ -31,7 +33,7 @@ public class MovePlayer : MonoBehaviour {
 	void Update () {
         if (jumping)
         {
-            return;
+            characterAnimator.SetBool("jump", true);
         }
         else if(Input.GetKeyDown(KeyCode.W))
         {
@@ -43,16 +45,22 @@ public class MovePlayer : MonoBehaviour {
             transform.rotation = Quaternion.Euler(0, - currentForward , 0);
             StartCoroutine(Jump(transform.forward * jumpDistance));
         }
-        if (Input.GetKeyDown(KeyCode.D))
+        else if (Input.GetKeyDown(KeyCode.D))
         {
             transform.rotation = Quaternion.Euler(0, currentForward +90, 0);
             StartCoroutine(Jump(transform.forward * jumpDistance));
         }
-        if (Input.GetKeyDown(KeyCode.A))
+        else if (Input.GetKeyDown(KeyCode.A))
         {
             transform.rotation = Quaternion.Euler(0, currentForward -90, 0);
             StartCoroutine(Jump(transform.forward * jumpDistance));
         }
+        else
+        {
+            characterAnimator.SetBool("jump", false);
+        }
+
+        
             
    
 	}
