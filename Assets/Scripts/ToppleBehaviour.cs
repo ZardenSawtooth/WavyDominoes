@@ -37,11 +37,9 @@ public class ToppleBehaviour : MonoBehaviour {
         {
             col.gameObject.transform.position = new Vector3(transform.position.x, col.transform.position.y, transform.position.z);
         }
-            
-        
     }
 
-    bool compareWithinApprox (float a, float b, float errorValue)
+    bool compareWithinApprox(float a, float b, float errorValue)
     {
         //Debug.Log("a = " + a + " b = " + b);
         //Debug.Log("comparison = " + (Mathf.Abs(a) - Mathf.Abs(b)));
