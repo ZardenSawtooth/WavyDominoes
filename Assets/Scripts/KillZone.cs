@@ -5,6 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class KillZone : MonoBehaviour {
 
+    public string levelName = "Level1";
+
 	// Use this for initialization
 	void Start () {
 		
@@ -19,7 +21,7 @@ public class KillZone : MonoBehaviour {
     {
         if (other.gameObject.tag == "Player")
         {
-             SceneManager.LoadScene("Level1");
+             SceneManager.LoadScene(levelName);
         }
     }
 }

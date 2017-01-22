@@ -24,9 +24,13 @@ public class ToppleBehaviour : MonoBehaviour {
 
 
             //if (Mathf.Approximately(cosAngle, 1.0f) || Mathf.Approximately(cosAngle, -1.0f))
-             if (compareWithinApprox(cosAngle, 1.0f, 0.1f) || compareWithinApprox(cosAngle, -1.0f, 0.1f))
+            if (compareWithinApprox(cosAngle, 1.0f, 0.1f) )
             {
                 gameObject.GetComponent<Rigidbody>().AddForceAtPosition(force, new Vector3(transform.position.x, transform.position.y + 0.6f, transform.position.z));
+            }else 
+            if (compareWithinApprox(cosAngle, -1.0f, 0.1f))
+            {
+                gameObject.GetComponent<Rigidbody>().AddForceAtPosition(-force, new Vector3(transform.position.x, transform.position.y + 0.6f, transform.position.z));
             }
         }
     }

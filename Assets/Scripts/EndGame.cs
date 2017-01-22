@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class EndGame : MonoBehaviour {
 
     public float fadeTime = 3.0f;
-
+    public GameObject GameManager;
     public Image overlay;
     // Use this for initialization
     void Start () {
@@ -23,7 +23,10 @@ public class EndGame : MonoBehaviour {
     {
         if (col.gameObject.tag == "Player")
         {
-            StartCoroutine(FadeToBlack());
+            if(GameManager.GetComponent<GameManager>().gameEndFlag)
+            {
+                StartCoroutine(FadeToBlack());
+            }
         }
     }
 
