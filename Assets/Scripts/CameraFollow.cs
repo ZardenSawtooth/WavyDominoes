@@ -57,11 +57,11 @@ public class CameraFollow : MonoBehaviour {
         if (direction == 1)
         {
             
-            targetRotation = Quaternion.Euler(transform.rotation.x, transform.rotation.eulerAngles.y - 90.0f, transform.rotation.z);
+            targetRotation = Quaternion.Euler(transform.rotation.x, transform.rotation.eulerAngles.y + 90.0f, transform.rotation.z);
         }
         else if (direction == -1)
         {
-            targetRotation = Quaternion.Euler(transform.rotation.x, transform.rotation.eulerAngles.y + 90.0f, transform.rotation.z);
+            targetRotation = Quaternion.Euler(transform.rotation.x, transform.rotation.eulerAngles.y - 90.0f, transform.rotation.z);
         }
         whomToFollow.GetComponent<MovePlayer>().currentForward = targetRotation.eulerAngles.y;
 
